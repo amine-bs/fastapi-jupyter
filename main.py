@@ -1,13 +1,8 @@
 from io import BytesIO
 from fastapi import FastAPI, File, UploadFile
-from pydantic import BaseModel
 from utils import load_device, import_model, predict, is_image_file
 from PIL import Image
 
-class Predicition(BaseModel):
-    label: str
-    probability: float
-    description: None
  
 app = FastAPI()
 
