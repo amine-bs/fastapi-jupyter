@@ -3,9 +3,9 @@ from torchvision import models
 
 class ResNet(nn.Module):
 
-  def __init__(self, class_num=2, architecture="resnet18"):
+  def __init__(self, class_num=2, architecture="resnet18", pretrained=False):
     super(ResNet,self).__init__()
-    model = models.resnet18()
+    model = models.resnet18(pretrained=pretrained)
     fc_input_dim = model.fc.in_features
     model.fc = nn.Linear(fc_input_dim, class_num)
     self.model = model

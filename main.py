@@ -1,7 +1,7 @@
 from io import BytesIO
 from fastapi import FastAPI, File, UploadFile
 from pydantic import BaseModel
-from utils import load_device, load_model, predict, is_image_file
+from utils import load_device, import_model, predict, is_image_file
 from PIL import Image
 
 class Predicition(BaseModel):
@@ -12,7 +12,7 @@ class Predicition(BaseModel):
 app = FastAPI()
 
 device = load_device()
-model = load_model(device)
+model = import_model(bucket="mbenxsalha", key="diffusion/state_dict.pickle", device=device)
 
 def read_image(file):
     img = Image.open(BytesIO(file)).convert("RGB")
