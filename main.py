@@ -24,23 +24,15 @@ def read_image(file):
 @app.get("/")
 def root():
     return {"message": "Welcome to Image Classification FastAPI"}
-"""
-@app.get("/model")
-def details():
-    model = "ResNet18"
-    accuracy = "99.25%"
-    training_dataset = "https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery"
-    return {"Model": model, 
-            "accuracy": accuracy,
-            "training dataset": training_dataset}
-"""
+
+
 @app.get("/model/{info}")
 def details(info:str, n:int=2):
     accuracy = 99.2511111
     if info == 'architecture':
         return {'architecture': 'ResNet18'}
     elif info == 'dataset':
-        return {'dataset url': "https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery"}
+        return {'dataset url': "https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza"}
     elif info == 'accuracy':
         formatted_accuracy = int((10**n)*accuracy)/(10**n)
         return {'accuracy': '{}%'.format(formatted_accuracy)}
